@@ -494,23 +494,117 @@ nav a:hover, nav a.active {
 /* =========================================
    7. 页脚 Footer
    ========================================= */
+/* =========================================
+   7. 页脚 Footer (升级版)
+   ========================================= */
 footer {
-    background-color: #000;
-    padding: 40px 0;
-    text-align: center;
-    border-top: 1px solid #333;
-    margin-top: 50px;
+    background-color: #05060a; /* 比背景色更深一点，增加沉浸感 */
+    padding: 50px 0 30px;
+    border-top: 1px solid #1f222e; /* 顶部微弱的深蓝灰边框 */
+    font-size: 14px;
+    color: #888;
+    margin-top: 60px;
 }
 
-.footer-logo {
-    height: 30px;
-    margin-bottom: 10px;
-    opacity: 0.5;
+/* --- 上层区域 --- */
+.footer-top {
+    display: flex;
+    justify-content: space-between; /* 左右推开 */
+    align-items: center;
+    padding-bottom: 20px;
 }
 
-.footer-info p {
-    color: #666;
+.footer-links a, 
+.footer-social a {
+    color: #bbb;
+    margin-right: 30px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover,
+.footer-social a:hover {
+    color: #00D4FF; /* 悬停变亮蓝 */
+}
+
+/* --- 分割线 --- */
+.footer-divider {
+    height: 1px;
+    background-color: #1f222e; /* 深色分割线 */
+    margin: 10px 0 25px 0;
+}
+
+/* --- 下层区域 --- */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* 底部对齐 */
+    flex-wrap: wrap; /* 防止小屏幕挤压 */
+}
+
+.footer-copyright {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Logo和文字的间距 */
+}
+
+.footer-logo-small {
+    height: 32px; /* 调整Logo大小 */
+    opacity: 0.9;
+}
+
+.copyright-text p {
+    margin: 0;
+    line-height: 1.5;
     font-size: 12px;
+    color: #666;
+}
+
+.copyright-text .license-code {
+    font-size: 12px;
+    color: #444; /* 备案号颜色暗一点 */
+}
+
+.footer-legal a {
+    font-size: 12px;
+    color: #555;
+    margin-left: 20px;
+    border-right: 1px solid #333; /* 文字右边的小竖线 */
+    padding-right: 20px;
+}
+
+.footer-legal a:last-child {
+    border-right: none;
+    padding-right: 0;
+}
+
+.footer-legal a:hover {
+    color: #888;
+}
+
+/* --- 手机端适配 --- */
+@media (max-width: 768px) {
+    .footer-top, 
+    .footer-bottom, 
+    .footer-copyright {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .footer-links, .footer-social {
+        margin-bottom: 10px;
+    }
+    
+    .footer-legal {
+        margin-top: 20px;
+    }
+    
+    .footer-legal a {
+        margin-left: 0;
+        margin-right: 15px;
+        padding-right: 15px;
+    }
 }
 
 /* =========================================
@@ -595,4 +689,256 @@ nav ul li.dropdown-item:hover .dropdown-box {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0); /* 回到正常位置 */
+}
+
+/* =========================================
+   10. 新版：环保/生态公约横幅 (Split Banner)
+   ========================================= */
+.eco-section-new {
+    padding: 60px 0;
+    background-color: #05060a; /* 页面深色背景 */
+}
+
+.eco-wrapper {
+    display: flex; /* 启用左右布局 */
+    background-color: #161925;
+    border-radius: 12px;
+    overflow: hidden; /* 防止图片溢出圆角 */
+    border: 1px solid #222;
+    min-height: 280px; /* 保证横幅有一定高度 */
+}
+
+/* 左侧：文字区 */
+.eco-info {
+    flex: 1; /* 占比 1 */
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid #222;
+}
+
+.eco-info h2 {
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.eco-info h3 {
+    color: #00D4FF; /* 科幻蓝 */
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.eco-info p {
+    color: #888;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 90%;
+}
+
+.eco-btn-new {
+    display: inline-block;
+    width: fit-content;
+    padding: 10px 25px;
+    border: 1px solid #00D4FF;
+    color: #00D4FF;
+    border-radius: 4px;
+    transition: 0.3s;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.eco-btn-new:hover {
+    background-color: #00D4FF;
+    color: #000;
+}
+
+/* 右侧：图片视觉区 */
+.eco-visual {
+    flex: 1.5; /* 占比 1.5，比左边宽一点 */
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 右侧背景图 */
+.eco-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0; left: 0;
+    opacity: 0.6; /* 稍微暗一点，为了看清上面的字 */
+    transition: 0.5s;
+}
+
+.eco-wrapper:hover .eco-bg-img {
+    transform: scale(1.05);
+    opacity: 0.8;
+}
+
+/* 图片上的文字 */
+.eco-visual-text {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    letter-spacing: 2px;
+}
+
+/* =========================================
+   11. 新版：新闻三列布局 (News Grid)
+   ========================================= */
+.news-section {
+    padding: 20px 0 80px 0; /* 上面紧一点，下面松一点 */
+    background-color: #0B0D17;
+}
+
+.news-grid-3 {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+/* --- 卡片 1 & 2 (上图下文) --- */
+.news-card-v2 {
+    flex: 1; /* 平均分配宽度 */
+    background-color: #161925;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #1f222e;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card-v2:hover {
+    transform: translateY(-5px);
+    border-color: #444;
+}
+
+.nc-img {
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+}
+
+.nc-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nc-tag {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: rgba(0,0,0,0.7);
+    color: #00D4FF;
+    padding: 2px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    border: 1px solid #00D4FF;
+}
+
+.nc-text {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.nc-text h4 {
+    color: #fff;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.nc-text p {
+    color: #777;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* --- 卡片 3 (纯文字列表) --- */
+.news-list-box-v2 {
+    flex: 1;
+    background-color: #161925;
+    border-radius: 8px;
+    padding: 25px;
+    border: 1px solid #1f222e;
+}
+
+.list-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.list-head h3 {
+    color: #fff;
+    font-size: 16px;
+    margin: 0;
+}
+
+.list-head a {
+    color: #555;
+    font-size: 12px;
+}
+
+.news-list-box-v2 ul li {
+    margin-bottom: 15px;
+    border-bottom: 1px dashed #2a2a2a;
+    padding-bottom: 8px;
+}
+
+.news-list-box-v2 ul li:last-child {
+    border-bottom: none;
+}
+
+.news-list-box-v2 a {
+    display: flex;
+    align-items: center;
+    color: #999;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.news-list-box-v2 a:hover {
+    color: #00D4FF;
+}
+
+.news-list-box-v2 .date {
+    color: #555;
+    margin-right: 10px;
+    font-family: monospace;
+}
+
+.news-list-box-v2 .title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px; /* 防止文字太长撑破 */
+}
+
+/* 手机适配 */
+@media (max-width: 768px) {
+    .eco-wrapper {
+        flex-direction: column; /* 手机上变成上下排列 */
+    }
+    .eco-visual {
+        height: 200px;
+    }
+    .news-grid-3 {
+        flex-direction: column;
+    }
 }
