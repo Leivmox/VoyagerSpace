@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>身份验证 - Voyager Space System</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
@@ -73,20 +74,20 @@
     </div>
 
     <script>
-        document.querySelector('.login-form').addEventListener('submit', function(e) {
+        document.querySelector('.login-form').addEventListener('submit', function (e) {
             e.preventDefault(); // 1. 阻止表单真的提交（防止刷新页面）
-            
+
             const btn = document.querySelector('.btn-submit');
             const btnText = document.querySelector('.btn-text');
             const errorBox = document.getElementById('login-error');
             const card = document.querySelector('.login-card');
-            
+
             // 2. 模拟加载状态 (变成“正在验证...”)
             const originalText = btnText.innerText;
-            btnText.innerText = "Verifying Identity..."; 
+            btnText.innerText = "Verifying Identity...";
             btn.style.opacity = "0.7";
             btn.style.cursor = "wait";
-            
+
             // 先把之前的错误提示关掉（如果是第二次点击）
             errorBox.style.display = 'none';
             card.classList.remove('shake-animation'); // 移除震动class以便再次触发
@@ -97,19 +98,20 @@
                 btnText.innerText = originalText;
                 btn.style.opacity = "1";
                 btn.style.cursor = "pointer";
-                
+
                 // 显示红色错误框
                 errorBox.style.display = 'flex';
-                
+
                 // 添加整个卡片的震动特效 (需要配合 CSS 中的 .shake-animation)
                 card.classList.add('shake-animation');
-                
+
                 // 清空密码框，增加“拒绝感”
                 document.querySelector('input[type="password"]').value = "";
-                
+
             }, 1500);
         });
     </script>
 
 </body>
+
 </html>

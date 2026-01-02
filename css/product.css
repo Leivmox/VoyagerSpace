@@ -1,0 +1,301 @@
+/* =========================================
+   产品页专用样式 (Product Page)
+   ========================================= */
+
+/* --- 1. 顶部 Hero Banner --- */
+.page-hero {
+    position: relative;
+    height: 400px; /* 不需要首页那么高 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 70px; /* 避开固定导航栏 */
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+}
+
+.hero-bg img {
+    width: 100%; height: 100%; object-fit: cover;
+    opacity: 0.5;
+}
+
+.hero-content h1 {
+    font-size: 48px; letter-spacing: 5px; margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(0,0,0,1);
+}
+
+.hero-content p {
+    color: #00D4FF; font-size: 14px; letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* --- 2. 事业部板块通用布局 --- */
+.division-section {
+    padding: 100px 0;
+    border-bottom: 1px solid #222;
+}
+
+/* 偶数板块背景稍微深一点/不同一点，增加节奏感 */
+.dark-bg {
+    background-color: #080910; /* 比 #0B0D17 稍微深一点点 */
+}
+
+/* --- 3. 事业部标题设计 (左数字 右文字) --- */
+.div-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 60px;
+}
+
+.div-num {
+    font-size: 80px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.05); /* 极淡的背景字 */
+    line-height: 1;
+    margin-right: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.div-title h2 {
+    font-size: 32px;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.div-title h3 {
+    font-size: 16px;
+    color: #00D4FF;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.div-title p {
+    color: #888;
+    max-width: 600px;
+    font-size: 15px;
+}
+
+/* --- 4. 针对本页卡片的微调 --- */
+/* 如果你需要卡片里的列表更清晰，可以加这个 */
+.card-text p strong {
+    color: #fff;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+/* 响应式：手机上把标题数字改小一点 */
+@media (max-width: 768px) {
+    .div-header {
+        flex-direction: column;
+    }
+    .div-num {
+        font-size: 50px;
+        margin-bottom: 10px;
+    }
+    .page-hero {
+        height: 250px;
+    }
+    .hero-content h1 {
+        font-size: 32px;
+    }
+}
+/* =========================================
+   左右分栏布局 (Split Layout)
+   ========================================= */
+
+.split-section {
+    padding: 80px 0;
+    overflow: hidden; /* 防止图片溢出 */
+}
+
+/* Flex 容器：让图文并排 */
+.split-container {
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    justify-content: space-between;
+    gap: 60px; /* 左右间距 */
+}
+
+/* 反转顺序 (用于第3部分，让图在左边) */
+.split-container.reverse {
+    flex-direction: row-reverse;
+}
+
+/* --- 左侧文字区域 --- */
+.split-text {
+    flex: 1; /* 占据剩余空间 */
+    max-width: 600px;
+}
+
+/* 小号标题头 (数字+文字) */
+.div-header-small {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+    padding-bottom: 10px;
+}
+
+.div-header-small .div-num {
+    font-size: 60px; /* 比原来小一点 */
+    color: rgba(255, 255, 255, 0.1);
+    margin-right: 15px;
+    line-height: 0.8;
+}
+
+.div-header-small h2 {
+    font-size: 28px;
+    color: #fff;
+    margin: 0;
+}
+
+.intro-p {
+    font-size: 16px;
+    color: #ccc;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+/* --- 纯文字列表样式 --- */
+.text-feature-list {
+    margin-bottom: 40px;
+    border-left: 2px solid #333; /* 左边加根线，显得整齐 */
+    padding-left: 20px;
+}
+
+.tf-item {
+    margin-bottom: 25px;
+}
+
+.tf-item h4 {
+    color: #00D4FF;
+    font-size: 18px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tf-item p {
+    font-size: 14px;
+    color: #888;
+    margin: 0;
+}
+
+/* --- 右侧大图区域 --- */
+.split-img {
+    flex: 1;
+    height: 400px; /* 固定高度，显得方正有力 */
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5); /* 强烈的阴影 */
+    border: 1px solid #333;
+}
+
+.split-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.split-img:hover img {
+    transform: scale(1.05); /* 鼠标放上去微微放大 */
+}
+
+/* --- 按钮样式补充 --- */
+.btn-primary {
+    display: inline-block;
+    background: #00D4FF;
+    color: #000;
+    padding: 12px 30px;
+    border-radius: 4px; /* 方一点的圆角，更工业风 */
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background: #fff;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+}
+
+.btn-outline {
+    display: inline-block;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.btn-outline:hover {
+    border-color: #00D4FF;
+    color: #00D4FF;
+}
+
+/* --- 响应式适配 (手机端) --- */
+@media (max-width: 900px) {
+    .split-container, 
+    .split-container.reverse {
+        flex-direction: column; /* 手机上全部垂直排列 */
+        gap: 30px;
+    }
+    
+    .split-img {
+        width: 100%;
+        height: 250px; /* 手机上图片矮一点 */
+    }
+    
+    .text-feature-list {
+        border-left: none; /* 手机上取消左边线 */
+        padding-left: 0;
+    }
+}
+/* =========================================
+   新增：第一事业部补充样式
+   ========================================= */
+
+/* 详细介绍文本块 */
+.division-intro-text {
+    max-width: 800px;      /* 限制宽度，防止文字一行太长难看 */
+    margin: -30px auto 50px auto; /* 上移一点紧贴标题，下方留空 */
+    text-align: center;    /* 文字居中 */
+    color: #ccc;           /* 银灰色 */
+    font-size: 16px;
+    line-height: 1.8;      /* 增加行高，提升阅读体验 */
+    border-left: 3px solid #00D4FF; /* 左侧加个装饰线 */
+    border-right: 3px solid #00D4FF; /* 右侧加个装饰线 */
+    padding: 0 20px;       /* 文字左右留白 */
+}
+
+/* 底部按钮区域 */
+.section-footer {
+    text-align: center;    /* 让按钮居中 */
+    margin-top: 50px;      /* 与上方卡片拉开距离 */
+}
+
+/* 特大号按钮修饰 (在原有 btn-primary 基础上增加) */
+.btn-large {
+    padding: 15px 50px;    /* 更大更宽 */
+    font-size: 18px;
+    border-radius: 50px;   /* 变成胶囊形状 */
+    letter-spacing: 2px;
+}
+
+/* 手机端适配 */
+@media (max-width: 768px) {
+    .division-intro-text {
+        border: none;      /* 手机上把左右边框去掉，太挤了 */
+        padding: 0;
+        text-align: left;  /* 手机上左对齐更容易阅读 */
+    }
+}
