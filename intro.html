@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>关于我们 - 远航星际 Voyager Space</title>
     <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/intro.css">
+    <link rel="stylesheet" href="css/intro.css">
 </head>
+
 <body>
 
     <header>
@@ -18,11 +20,42 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="intro.html" class="active">简介</a></li>
-                    <li><a href="product.html">业务</a></li>
-                    <li><a href="other.html">员工</a></li>
-                    <li><a href="login.html" class="btn-login">登录 Login</a></li>
+                    <nav>
+                        <ul>
+                            <li><a href="index.html">首页</a></li>
+
+                            <li class="dropdown-item">
+                                <a href="intro.html" class="active">简介</a>
+                                <div class="dropdown-box">
+                                    <a href="intro.html">公司简介</a>
+                                    <a href="intro.html#milestones">发展历程</a>
+                                    <a href="intro.html#leadership">管理团队</a>
+                                    <a href="intro.html#locations">公司据点</a>
+                                </div>
+                            </li>
+
+                            <li class="dropdown-item">
+                                <a href="product.html">业务</a>
+                                <div class="dropdown-box">
+                                    <a href="product.html#travel">星际文旅</a>
+                                    <a href="product.html#dynamics">星舰重工</a>
+                                    <a href="product.html#resources">深空资源</a>
+                                    <a href="product.html#link">量子通讯</a>
+                                </div>
+                            </li>
+
+                            <li class="dropdown-item">
+                                <a href="other.html">员工</a>
+                                <div class="dropdown-box">
+                                    <a href="other.html#development">人才发展</a>
+                                    <a href="other.html#facilities">设施环境</a>
+                                    <a href="other.html#culture">Voyager 文化</a>
+                                </div>
+                            </li>
+
+                            <li><a href="login.html" class="btn-login">登录 Login</a></li>
+                        </ul>
+                    </nav>
                 </ul>
             </nav>
         </div>
@@ -43,9 +76,10 @@
             <div class="intro-grid">
                 <div class="intro-text">
                     <h2 class="block-title">公司简介</h2>
-                    <p>远航星际集团 (Voyager Space Group) 成立于 2024 年，总部位于地球联合政府上海自贸区。作为人类历史上首家获得“深空开发特许权”的商业实体，我们致力于构建连接地球与外层空间的生命线。</p>
+                    <p>远航星际集团 (Voyager Space Group) 成立于 2024
+                        年，总部位于地球联合政府上海自贸区。作为人类历史上首家获得“深空开发特许权”的商业实体，我们致力于构建连接地球与外层空间的生命线。</p>
                     <p>经过短短数年的爆发式发展，远航星际已建立起涵盖星际旅游、重型舰船制造、小行星采矿及量子通讯的四大核心商业版图，垄断了太阳系内 85% 的民用航天运力。</p>
-                    
+
                     <div class="mission-box">
                         <h3>愿景 Vision</h3>
                         <p>让星辰大海成为人类的后花园。</p>
@@ -60,13 +94,13 @@
         </div>
     </section>
 
-<section class="history-block">
+    <section class="history-block" id="milestones">
         <div class="container">
             <h2 class="section-title">发展历程 / Milestones</h2>
             <p class="section-subtitle">从一粒微尘到星辰大海的征途</p>
-            
+
             <div class="timeline">
-                
+
                 <div class="timeline-group">
                     <span class="year-label">2024</span>
                     <div class="timeline-item">
@@ -191,7 +225,7 @@
         </div>
     </section>
 
-    <section class="team-block">
+    <section class="team-block" id="leadership">
         <div class="container">
             <h2 class="section-title">管理团队 / Leadership</h2>
             <div class="team-grid">
@@ -223,7 +257,7 @@
         </div>
     </section>
 
-<section class="location-block">
+    <section class="location-block" id="locations">
         <div class="container">
             <h2 class="section-title">公司据点 / Strategic Locations</h2>
             <p class="section-subtitle">跨越 3.8 亿公里的文明足迹</p>
@@ -231,7 +265,7 @@
             <div class="loc-category">
                 <h3 class="cat-title">地球行政中心 / TERRA HQ</h3>
                 <div class="loc-grid">
-                    
+
                     <div class="loc-card">
                         <div class="loc-icon">CN</div>
                         <div class="loc-info">
@@ -268,7 +302,7 @@
             <div class="loc-category">
                 <h3 class="cat-title">地外运营基地 / OFF-WORLD OPS</h3>
                 <div class="loc-grid">
-                    
+
                     <div class="loc-card sci-fi">
                         <div class="loc-icon">LEO</div>
                         <div class="loc-info">
@@ -346,4 +380,5 @@
 
     <script src="js/main.js"></script>
 </body>
+
 </html>

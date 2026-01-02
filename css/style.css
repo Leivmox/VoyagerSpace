@@ -535,3 +535,64 @@ footer {
     }
 }
 
+/* =========================================
+   9. 导航栏下拉菜单 Dropdown Menu (新增)
+   ========================================= */
+
+/* 设置父级 li 为相对定位，以便下拉框以此为基准 */
+nav ul li.dropdown-item {
+    position: relative;
+    padding-bottom: 10px; /* 增加一点底部内边距，防止鼠标移向下拉框时断开 */
+    margin-bottom: -10px; /* 抵消内边距，保持对齐 */
+}
+
+/* 下拉框容器样式 */
+.dropdown-box {
+    position: absolute;
+    top: 100%; /* 在父元素正下方 */
+    left: 50%;
+    transform: translateX(-50%) translateY(20px); /* 初始位置略微靠下，用于动画 */
+    background-color: rgba(11, 13, 23, 0.95); /* 深色背景，略带透明 */
+    border: 1px solid #333;
+    border-top: 3px solid #00D4FF; /* 顶部亮蓝色高亮条 */
+    width: 160px; /* 下拉框宽度 */
+    padding: 10px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    border-radius: 0 0 5px 5px;
+    
+    /* 隐藏状态 */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1100;
+}
+
+/* 下拉框里的链接样式 */
+.dropdown-box a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #ccc;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    white-space: nowrap; /* 防止文字换行 */
+}
+
+/* 去掉最后一个链接的下划线 */
+.dropdown-box a:last-child {
+    border-bottom: none;
+}
+
+/* 鼠标悬停时的链接效果 */
+.dropdown-box a:hover {
+    background-color: rgba(0, 212, 255, 0.1);
+    color: #00D4FF;
+    padding-left: 25px; /* 产生微小的移动效果 */
+}
+
+/* 触发显示逻辑：当鼠标悬停在 li 上时，显示下面的 .dropdown-box */
+nav ul li.dropdown-item:hover .dropdown-box {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0); /* 回到正常位置 */
+}
