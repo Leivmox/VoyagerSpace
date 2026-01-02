@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>远航星际 Voyager Space - 跨越光年</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo2.png" alt="Logo">
+                </a>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">首页</a></li>
+
+                    <li><a href="intro.html">简介</a></li>
+
+                    <li><a href="product.html">业务</a></li>
+
+                    <li><a href="other.html">员工</a></li>
+
+                    <li><a href="login.html" class="btn-login">登录 Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="banner">
+        <div class="slider-container">
+
+            <div class="slide active">
+                <div class="banner-content">
+                    <h1>跨越光年，触手可及</h1>
+                    <h2>BEYOND LIGHTYEARS, WITHIN REACH</h2>
+                    <p>星际文旅事业部：2026年，开启您的第一次星际旅行</p>
+                    <a href="product.html" class="cta-btn">立即预订 Start Journey</a>
+                </div>
+                <div class="banner-bg">
+                    <img src="images/bk1.png" alt="Travel">
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="banner-content">
+                    <h1>铸造非凡，驰骋深空</h1>
+                    <h2>FORGING EXCELLENCE, RIDING THE DEEP</h2>
+                    <p>星舰重工事业部：民用穿梭机与重型运输舰的终极选择</p>
+                    <a href="product.html" class="cta-btn">选购飞船 Buy Starship</a>
+                </div>
+                <div class="banner-bg">
+                    <img src="images/bk2.png" alt="Dynamics">
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="banner-content">
+                    <h1>攫取星辰，赋能未来</h1>
+                    <h2>GRASPING STARS, EMPOWERING FUTURE</h2>
+                    <p>深空资源事业部：加入小行星采矿队，掌握宇宙命脉</p>
+                    <a href="other.html" class="cta-btn">加入我们 Join Mining</a>
+                </div>
+                <div class="banner-bg">
+                    <img src="images/bk3.png" alt="Resources">
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="banner-content">
+                    <h1>量子纠缠，天涯咫尺</h1>
+                    <h2>QUANTUM ENTANGLEMENT, ZERO DISTANCE</h2>
+                    <p>量子通讯事业部：全星域无延迟覆盖，连接你我</p>
+                    <a href="product.html" class="cta-btn">办理套餐 Get Link</a>
+                </div>
+                <div class="banner-bg">
+                    <img src="images/bk4.png" alt="Link">
+                </div>
+            </div>
+        </div>
+
+        <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+        <a class="next" onclick="changeSlide(1)">&#10095;</a>
+
+        <div class="dots-container">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+        </div>
+    </section>
+
+<section class="features">
+        <div class="container">
+            
+            <h2 class="section-title">核心业务版图 / Our Divisions</h2>
+            <p class="section-subtitle">从地表到深空，构建人类文明的星际基础设施。</p>
+            
+<div class="division-grid">
+                
+                <a href="product.html#travel" class="t-card">
+                    <div class="t-bg">
+                        <img src="images/moon.png" alt="Travel">
+                    </div>
+                    <div class="t-content">
+                        <span class="t-num">01</span>
+                        <h3>星际文旅事业部</h3>
+                        <p>Voyager Travel</p>
+                        <div class="t-desc">提供月球度假、火星探险及黑洞视界巡航等极致观光体验。</div>
+                        <span class="t-arrow">了解详情 &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="product.html#dynamics" class="t-card">
+                    <div class="t-bg">
+                        <img src="images/bk2.png" alt="Dynamics">
+                    </div>
+                    <div class="t-content">
+                        <span class="t-num">02</span>
+                        <h3>星舰重工事业部</h3>
+                        <p>Voyager Dynamics</p>
+                        <div class="t-desc">从民用穿梭机到歼星舰级运输船，定义星际航行的工业标准。</div>
+                        <span class="t-arrow">查看机型 &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="other.html" class="t-card">
+                    <div class="t-bg">
+                        <img src="images/bk3.png" alt="Resources">
+                    </div>
+                    <div class="t-content">
+                        <span class="t-num">03</span>
+                        <h3>深空资源事业部</h3>
+                        <p>Voyager Resources</p>
+                        <div class="t-desc">掌控小行星带矿权，提供采矿船租赁与高危作业招募。</div>
+                        <span class="t-arrow">加入船队 &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="product.html#link" class="t-card">
+                    <div class="t-bg">
+                        <img src="images/bk4.png" alt="Link">
+                    </div>
+                    <div class="t-content">
+                        <span class="t-num">04</span>
+                        <h3>量子通讯事业部</h3>
+                        <p>Voyager Link</p>
+                        <div class="t-desc">跨越光年的即时连接，覆盖全星域的量子纠缠网络节点。</div>
+                        <span class="t-arrow">选购套餐 &rarr;</span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-info">
+                <img src="images/logo2.png" alt="Logo Small" class="footer-logo">
+                <p>&copy; 2026 Voyager Space Corporation. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

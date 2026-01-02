@@ -1,0 +1,921 @@
+/* =========================================
+   1. 全局设置 Global
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    background-color: #0B0D17; /* 深空黑背景 */
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   2. 导航栏 Header
+   ========================================= */
+header {
+    background-color: rgba(11, 13, 23, 0.95); /* 稍微加深一点不透明度 */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding: 15px 0;
+    border-bottom: 1px solid #333;
+    backdrop-filter: blur(10px); /* 增加毛玻璃效果 */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+}
+
+nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    font-size: 16px;
+    color: #ccc;
+    font-weight: 500;
+}
+
+nav a:hover, nav a.active {
+    color: #00D4FF;
+}
+
+.btn-login {
+    border: 1px solid #00D4FF;
+    padding: 5px 20px;
+    border-radius: 20px;
+    color: #00D4FF;
+    transition: 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #00D4FF;
+    color: #000;
+}
+
+/* =========================================
+   3. 首页轮播图 Banner
+   ========================================= */
+.banner {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.slider-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* 幻灯片基础样式 */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* 激活状态 */
+.slide.active {
+    background-color: transparent; /* 确保无背景色干扰 */
+    opacity: 1;
+    z-index: 2;
+}
+
+/* 文字上浮动画 */
+.slide.active .banner-content {
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 背景图片 */
+.banner-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.banner-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6; /* 图片暗化处理 */
+}
+
+/* 轮播文字内容 */
+.banner-content {
+    z-index: 10;
+    padding: 0 20px;
+    max-width: 800px;
+}
+
+.banner-content h1 {
+    font-size: 60px;
+    margin-bottom: 10px;
+    letter-spacing: 5px;
+    text-shadow: 0 0 20px rgba(0,0,0,0.8);
+}
+
+.banner-content h2 {
+    font-size: 24px;
+    color: #00D4FF;
+    margin-bottom: 20px;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.banner-content p {
+    font-size: 18px;
+    color: #ddd;
+    margin-bottom: 40px;
+}
+
+.cta-btn {
+    display: inline-block;
+    background-color: #00D4FF;
+    color: #000;
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+.cta-btn:hover {
+    transform: scale(1.05);
+    background-color: #fff;
+}
+
+/* 轮播控制控件 */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    z-index: 20;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 212, 255, 0.4);
+}
+
+.dots-container {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+    z-index: 20;
+}
+
+.dot {
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: #717171;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.dot.active, .dot:hover {
+    background-color: #00D4FF;
+}
+
+/* =========================================
+   4. 通用标题样式
+   ========================================= */
+.features {
+    padding: 80px 0;
+    background-color: #0B0D17;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 10px; /* 下面紧接副标题 */
+    border-bottom: 2px solid #00D4FF;
+    display: inline-block;
+    padding-bottom: 10px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #888;
+    margin-top: 0;
+    margin-bottom: 60px;
+    font-size: 14px;
+}
+
+/* =========================================
+   5. 首页核心业务版图 (仿腾讯风格)
+   ========================================= */
+.division-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* 卡片容器：这是一个大链接 */
+.t-card {
+    position: relative;
+    width: 49%; /* 两个一行 */
+    height: 400px; /* 固定高度，海报感 */
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #000;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 20px;
+}
+
+/* 背景图层 */
+.t-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.t-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    opacity: 0.8;
+}
+
+/* 黑色渐变遮罩 (Vignette) */
+.t-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.95) 100%);
+    z-index: 2;
+    transition: opacity 0.3s;
+}
+
+/* 内容层 */
+.t-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    z-index: 3;
+    color: #fff;
+    transform: translateY(10px); /* 默认微下沉 */
+    transition: transform 0.4s ease;
+}
+
+.t-num {
+    font-size: 40px;
+    font-weight: bold;
+    color: rgba(255,255,255,0.1);
+    position: absolute;
+    top: -30px;
+    right: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.t-content h3 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.t-content p {
+    font-size: 14px;
+    color: #00D4FF;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.t-desc {
+    font-size: 14px;
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    max-width: 95%;
+    opacity: 0.8; /* 默认可见，但稍微透明 */
+    height: auto;
+    transition: opacity 0.4s ease;
+}
+
+.t-arrow {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 8px 20px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+/* --- 交互特效 Hover Effects --- */
+
+/* 1. 图片放大 */
+.t-card:hover .t-bg img {
+    transform: scale(1.08);
+    opacity: 0.6;
+}
+
+/* 2. 内容上浮 */
+.t-card:hover .t-content {
+    transform: translateY(0);
+}
+
+/* 3. 箭头变色 */
+.t-card:hover .t-arrow {
+    background-color: #00D4FF;
+    color: #000;
+    border-color: #00D4FF;
+}
+
+/* 4. 标题变色 */
+.t-card:hover .t-content h3 {
+    color: #00D4FF;
+}
+
+/* =========================================
+   6. 通用卡片样式 (用于内页或其他区域)
+   注意：首页目前用的是上面的 t-card，但内页可能需要这个
+   ========================================= */
+.card-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: #161925;
+    width: 32%; /* 一行三个 */
+    min-width: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.3s;
+    border: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: #00D4FF;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card-img {
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.card:hover .card-img img {
+    transform: scale(1.1);
+}
+
+.card-text {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.card-text h3 {
+    color: #00D4FF;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.card-text p {
+    color: #bbb;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.card-text a {
+    display: inline-block;
+    font-size: 14px;
+    color: #aaa;
+    border-bottom: 1px solid transparent;
+}
+
+.card-text a:hover {
+    color: #fff;
+    border-bottom: 1px solid #00D4FF;
+}
+
+/* =========================================
+   7. 页脚 Footer
+   ========================================= */
+footer {
+    background-color: #000;
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid #333;
+    margin-top: 50px;
+}
+
+.footer-logo {
+    height: 30px;
+    margin-bottom: 10px;
+    opacity: 0.5;
+}
+
+.footer-info p {
+    color: #666;
+    font-size: 12px;
+}
+
+/* =========================================
+   8. 响应式适配 Mobile
+   ========================================= */
+@media (max-width: 768px) {
+    /* 首页大卡片变单列 */
+    .t-card {
+        width: 100%;
+        height: 300px;
+    }
+
+    /* 内页通用卡片变单列 */
+    .card {
+        width: 100%;
+    }
+    
+    /* 标题大小调整 */
+    .banner-content h1 {
+        font-size: 36px;
+        letter-spacing: 2px;
+    }
+}
+
+
+/* =========================================
+   9. 简介页专用样式 (Intro Page)
+   ========================================= */
+
+/* --- Page Banner (内页顶部图) --- */
+.page-banner {
+    position: relative;
+    height: 400px; /* 比首页轮播图矮一点 */
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.page-banner-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+}
+
+.page-banner-bg img {
+    width: 100%; height: 100%; object-fit: cover; opacity: 0.5;
+}
+
+.page-banner-content h1 {
+    font-size: 48px; letter-spacing: 5px; margin-bottom: 10px;
+}
+
+.page-banner-content p {
+    font-size: 18px; color: #00D4FF; text-transform: uppercase;
+}
+
+/* --- Intro Block (公司简介) --- */
+.intro-block { padding: 80px 0; background-color: #0B0D17; }
+
+.block-title {
+    font-size: 28px; border-left: 4px solid #00D4FF; padding-left: 15px; margin-bottom: 30px;
+}
+
+.intro-grid {
+    display: flex; justify-content: space-between; align-items: center; gap: 50px;
+}
+
+.intro-text { width: 55%; }
+.intro-text p { color: #ccc; margin-bottom: 20px; line-height: 1.8; }
+
+.mission-box {
+    background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 8px; margin-top: 30px; border: 1px solid #333;
+}
+
+.mission-box h3 { color: #00D4FF; margin-bottom: 10px; }
+.mission-box p { margin-bottom: 20px; font-weight: bold; color: #fff; }
+
+.intro-img { width: 35%; }
+.intro-img img { width: 100%; border-radius: 10px; border: 1px solid #333; }
+
+/* --- History Block (时间轴) --- */
+/* --- 仿腾讯大事记 Timeline (修复版) --- */
+.history-block {
+    padding: 80px 0;
+    background-color: #0B0D17;
+}
+
+.timeline {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    /* 关键修改：增加左侧内边距，给年份留出足够空间 */
+    border-left: 1px solid rgba(255, 255, 255, 0.1); 
+    padding-left: 120px; 
+}
+
+.timeline-group {
+    position: relative;
+    margin-bottom: 60px;
+}
+
+/* 年份标签 */
+.year-label {
+    position: absolute;
+    /* 关键修改：把年份往左推得更远，不压住线 */
+    left: -250px; 
+    top: -5px; /* 稍微往上提一点，跟圆点对齐 */
+    font-size: 36px;
+    font-weight: 900;
+    color: #00D4FF;
+    font-family: 'Arial Black', sans-serif;
+    line-height: 1;
+    text-align: right;
+    width: 100px; /* 给个固定宽度，防止文字太长换行 */
+}
+
+/* 竖线上的小圆点 */
+.timeline-group::before {
+    content: '';
+    position: absolute;
+    /* 关键修改：圆点正好压在 border-left 线上 */
+    left: -125px; /* 计算逻辑：padding-left(120) + border(1) + 半径修正 -> 这里的 -125px 是相对于 .timeline-group 内容区域的 */
+    /* 修正定位逻辑：
+       .timeline padding-left 是 120px。
+       border 在 content 的左边 120px 处。
+       所以圆点应该在 left: -125px 左右 (圆点宽9px，中心对齐线)
+    */
+    left: -125px; 
+    top: 5px;
+    width: 9px;
+    height: 9px;
+    background-color: #00D4FF;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #00D4FF; /* 加强发光效果 */
+    z-index: 1;
+}
+
+/* 具体的月份事件 */
+.timeline-item {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+}
+
+.timeline-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.month {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    width: 70px; /* 稍微加宽一点 */
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.timeline-item p {
+    font-size: 15px;
+    color: #aaa;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* 鼠标悬停高亮 */
+.timeline-item:hover p {
+    color: #fff;
+}
+
+/* 手机适配 (Mobile) */
+@media (max-width: 768px) {
+    .timeline {
+        padding-left: 20px;
+        border-left: none; /* 手机上空间不够，去掉左边的大竖线 */
+    }
+    
+    .timeline-group {
+        margin-bottom: 40px;
+    }
+
+    .year-label {
+        position: relative; /* 手机上不再绝对定位 */
+        left: 0;
+        top: 0;
+        text-align: left;
+        margin-bottom: 15px;
+        display: block;
+        font-size: 28px;
+        border-bottom: 1px solid #333;
+        padding-bottom: 10px;
+    }
+    
+    /* 手机上去掉原本的大圆点 */
+    .timeline-group::before {
+        display: none;
+    }
+
+    .month {
+        width: 50px;
+        font-size: 14px;
+    }
+}
+
+/* --- Structure Block (架构图) --- */
+.structure-block { padding: 80px 0; background-color: #0B0D17; text-align: center; }
+
+.struct-chart { max-width: 900px; margin: 0 auto; }
+
+.struct-top {
+    display: inline-block; padding: 15px 40px; border: 2px solid #00D4FF;
+    border-radius: 50px; font-size: 20px; font-weight: bold; margin-bottom: 30px;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+}
+
+.struct-line {
+    width: 2px; height: 30px; background: #333; margin: 0 auto 30px;
+}
+
+.struct-row { display: flex; justify-content: space-between; gap: 20px; }
+
+.struct-box {
+    background: #161925; width: 23%; padding: 20px 10px; border-radius: 8px;
+    border: 1px solid #333; transition: 0.3s;
+}
+
+.struct-box:hover { border-color: #00D4FF; transform: translateY(-5px); }
+
+.struct-box span { display: block; margin-top: 5px; color: #00D4FF; font-weight: bold; }
+
+/* --- Team Block (管理团队) --- */
+.team-block { padding: 80px 0; background-color: #000; }
+
+.team-grid { display: flex; justify-content: space-between; gap: 30px; }
+
+.team-member {
+    background: #161925; padding: 40px 20px; text-align: center; border-radius: 10px; width: 32%;
+    border: 1px solid #333; transition: 0.3s;
+}
+
+.team-member:hover { border-color: #00D4FF; transform: translateY(-10px); }
+
+.member-img {
+    width: 120px; height: 120px; margin: 0 auto 20px; border-radius: 50%; overflow: hidden;
+    border: 3px solid #00D4FF;
+}
+
+.member-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.team-member h3 { margin-bottom: 5px; font-size: 20px; }
+.team-member span { color: #00D4FF; font-size: 14px; display: block; margin-bottom: 15px; }
+.team-member p { font-size: 13px; color: #888; }
+
+/* --- Location Block (办公地点) --- */
+.location-block { padding: 80px 0; background-color: #0B0D17; }
+
+.loc-grid { display: flex; justify-content: space-between; gap: 20px; }
+
+.loc-item {
+    width: 32%; background: rgba(255,255,255,0.05); padding: 30px; border-radius: 8px;
+    text-align: center; border: 1px solid #333;
+}
+
+.loc-item h3 { color: #fff; margin-bottom: 10px; }
+.loc-item p { color: #888; font-size: 14px; }
+
+/* 手机适配 Intro */
+@media (max-width: 768px) {
+    .intro-grid, .struct-row, .team-grid, .loc-grid { flex-direction: column; }
+    .intro-text, .intro-img, .struct-box, .team-member, .loc-item { width: 100%; }
+    .struct-row { gap: 10px; }
+}
+
+/* --- 办公地点 (星际坐标风格) --- */
+
+.location-block {
+    padding: 80px 0;
+    background-color: #0B0D17;
+    /* 加一个稍微有点科幻感的网格背景 (可选) */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+.cat-title {
+    color: #fff;
+    font-size: 18px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-left: 3px solid #00D4FF;
+    padding-left: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.8;
+}
+
+.loc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.loc-card {
+    background-color: #161925;
+    width: calc(33.333% - 14px); /* 一行三个 */
+    padding: 25px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    display: flex;
+    align-items: flex-start; /* 顶部对齐 */
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 鼠标悬停效果：边框变蓝，轻微上浮 */
+.loc-card:hover {
+    border-color: #00D4FF;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 212, 255, 0.15);
+    background-color: #1c2030;
+}
+
+/* 左侧的大图标/代码 */
+.loc-icon {
+    font-size: 24px;
+    font-weight: 900;
+    color: #00189f;
+    background-color: #0B0D17;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    margin-right: 20px;
+    font-family: 'Arial Black', sans-serif;
+    border: 1px solid #222;
+    transition: 0.3s;
+}
+
+.loc-card:hover .loc-icon {
+    color: #00D4FF;
+    border-color: #00D4FF;
+}
+
+/* 针对科幻地点的图标稍微变个色 */
+.loc-card.sci-fi:hover .loc-icon {
+    color: #FF5722; /* 火星/深空用橙红色点缀，区分地球 */
+    border-color: #FF5722;
+}
+.loc-card.sci-fi:hover {
+    border-color: #FF5722; /* 边框也变橙色 */
+}
+
+
+/* 右侧文字信息 */
+.loc-info h4 {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.loc-addr {
+    color: #aaa;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+/* 坐标数据 - 增加科技感 */
+.loc-coord {
+    font-family: "Consolas", "Courier New", monospace; /* 等宽字体 */
+    color: #555;
+    font-size: 12px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.loc-card:hover .loc-coord {
+    color: #00D4FF; /* 悬停时坐标高亮 */
+}
+.loc-card.sci-fi:hover .loc-coord {
+    color: #FF5722;
+}
+
+/* 底部的小标签 */
+.loc-tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #bbb;
+}
+
+/* 手机适配 */
+@media (max-width: 768px) {
+    .loc-card {
+        width: 100%; /* 手机上一行一个 */
+    }
+}
+
+
