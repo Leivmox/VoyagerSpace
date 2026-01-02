@@ -919,3 +919,202 @@ footer {
 }
 
 
+/* =========================================
+   10. 登录页专用样式 (Login Page)
+   ========================================= */
+
+/* --- 全屏背景容器 --- */
+.login-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- 动态光斑 (氛围感核心) --- */
+.glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 1;
+    opacity: 0.6;
+    animation: floatOrb 10s infinite alternate ease-in-out;
+}
+
+.orb-1 {
+    width: 400px; height: 400px;
+    background: #00D4FF;
+    top: -100px; left: -100px;
+}
+
+.orb-2 {
+    width: 300px; height: 300px;
+    background: #7000ff; /* 紫色点缀，增加神秘感 */
+    bottom: -50px; right: -50px;
+    animation-delay: -5s;
+}
+
+@keyframes floatOrb {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+/* --- 登录卡片 (毛玻璃效果) --- */
+.login-card {
+    position: relative;
+    z-index: 10;
+    width: 420px;
+    padding: 50px 40px;
+    background: rgba(255, 255, 255, 0.03); /* 极低透明度 */
+    backdrop-filter: blur(20px); /* 关键：毛玻璃模糊 */
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+/* --- 头部区域 --- */
+.back-home {
+    position: absolute;
+    top: 20px; left: 20px;
+    font-size: 12px; color: #666;
+    text-decoration: none; transition: 0.3s;
+}
+.back-home:hover { color: #00D4FF; }
+
+.login-logo {
+    width: 160px; margin-bottom: 20px;
+}
+
+.login-header h2 {
+    color: #fff; font-size: 24px; letter-spacing: 2px; margin-bottom: 5px; text-transform: uppercase;
+}
+.login-header p {
+    color: #888; font-size: 13px; margin-bottom: 30px;
+}
+
+/* --- 输入框区域 --- */
+.input-group { text-align: left; margin-bottom: 20px; }
+.input-group label {
+    display: block; color: #aaa; font-size: 12px; margin-bottom: 8px; font-weight: bold;
+}
+
+.input-field {
+    position: relative;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #333;
+    border-radius: 4px;
+    display: flex; align-items: center;
+    transition: 0.3s;
+}
+
+.input-field:focus-within {
+    border-color: #00D4FF;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+}
+
+.input-field i {
+    padding: 0 15px; color: #555; font-size: 14px;
+}
+
+.input-field input {
+    width: 100%; padding: 12px 10px 12px 0;
+    background: transparent; border: none; outline: none;
+    color: #fff; font-size: 14px;
+}
+
+/* --- 选项行 (记住我/忘记密码) --- */
+.form-options {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px; color: #aaa; margin-bottom: 30px;
+}
+
+.form-options a { color: #aaa; text-decoration: none; transition: 0.3s; }
+.form-options a:hover { color: #fff; text-decoration: underline; }
+
+/* 自定义 Checkbox */
+.checkbox-container {
+    display: flex; align-items: center; cursor: pointer;
+}
+.checkbox-container input { display: none; }
+.checkbox-container .checkmark {
+    width: 16px; height: 16px; border: 1px solid #555;
+    margin-right: 8px; border-radius: 3px; position: relative;
+    transition: 0.3s;
+}
+.checkbox-container input:checked + .checkmark {
+    background: #00D4FF; border-color: #00D4FF;
+}
+
+/* --- 登录按钮 --- */
+.btn-submit {
+    width: 100%; padding: 15px;
+    background: linear-gradient(90deg, #00D4FF, #005bea);
+    border: none; border-radius: 4px;
+    color: #fff; font-weight: bold; letter-spacing: 2px;
+    cursor: pointer; transition: 0.3s;
+    text-transform: uppercase;
+    position: relative; overflow: hidden;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+}
+
+/* --- 底部声明 --- */
+.login-footer {
+    margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px;
+}
+.login-footer p { font-size: 11px; color: #444; margin: 3px 0; font-family: monospace; }
+
+/* 手机适配 */
+@media (max-width: 480px) {
+    .login-card { width: 90%; padding: 30px 20px; }
+    .glow-orb { opacity: 0.4; }
+}
+/* --- 登录失败专用样式 --- */
+
+/* 错误提示框 */
+.error-message {
+    background: rgba(255, 68, 68, 0.1); /* 淡淡的红背景 */
+    border: 1px solid #ff4444;
+    color: #ff4444;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1.5;
+    animation: fadeIn 0.3s ease;
+}
+
+.error-message i {
+    font-size: 20px;
+}
+
+/* 简单的淡入动画 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 窗口震动动画 (拒绝效果) */
+.shake-animation {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
+}
