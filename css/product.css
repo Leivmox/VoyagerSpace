@@ -5,7 +5,8 @@
 /* --- 1. 顶部 Hero Banner --- */
 .page-hero {
     position: relative;
-    height: 400px; /* 不需要首页那么高 */
+    height: 40vh; /* 不需要首页那么高 */
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;

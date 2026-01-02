@@ -6,11 +6,12 @@
 /* --- Page Banner (内页顶部图) --- */
 .page-banner {
     position: relative;
-    height: 400px; /* 比首页轮播图矮一点 */
+    height: 40vh; /* 比首页轮播图矮一点 */
     width: 100%;
     overflow: hidden;
     display: flex;
     align-items: center;
+    margin-top: 70px; /* 避开固定导航栏 */
     justify-content: center;
     text-align: center;
 }
@@ -74,7 +75,7 @@
 
 .timeline-group {
     position: relative;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 
 /* 年份标签 */
@@ -115,8 +116,8 @@
 
 /* 具体的月份事件 */
 .timeline-item {
-    margin-bottom: 30px;
-    padding-bottom: 30px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
 }

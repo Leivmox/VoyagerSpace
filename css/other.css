@@ -1,0 +1,184 @@
+/* =========================================
+   员工文化页面专用样式 (Culture Page)
+   ========================================= */
+
+/* 1. 通用文字样式 */
+.culture-head {
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 15px;
+    border-left: 4px solid #00D4FF;
+    padding-left: 15px;
+    letter-spacing: 1px;
+}
+
+.culture-p {
+    color: #bbb;
+    margin-bottom: 20px;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* 2. 人才发展板块 (修复图片格式问题) */
+.talent-wrapper {
+    display: flex;             /* 启用 Flex 布局 */
+    gap: 40px;                 /* 图文之间的间距 */
+    margin-top: 40px;
+    background-color: rgba(255, 255, 255, 0.02); /* 微微提亮背景 */
+    border: 1px solid #333;    /* 工业风边框 */
+    border-radius: 8px;
+    overflow: hidden;          /* 防止图片圆角溢出 */
+    transition: 0.3s;
+}
+
+/* 左侧文字区域 */
+.talent-content {
+    flex: 3;                   /* 占据 3/5 的宽度 */
+    padding: 40px;             /* 内部留白 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   /* 文字垂直居中 */
+}
+
+/* 去掉最后一段文字的下边距，保持排版整洁 */
+.talent-block:last-child .culture-p {
+    margin-bottom: 0;
+}
+
+/* 右侧图片区域 */
+.talent-image {
+    flex: 2;                   /* 占据 2/5 的宽度 */
+    min-height: 300px;         /* 设置最小高度，防止没内容时塌陷 */
+    position: relative;        /* 方便图片定位 */
+}
+
+.talent-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;         /* 关键：让图片自动裁剪填满，绝不拉伸变形 */
+    opacity: 0.8;              /* 默认稍暗，符合风格 */
+    transition: 0.5s;
+}
+
+/* 交互特效 */
+.talent-wrapper:hover {
+    border-color: #00D4FF;     /* 边框发光 */
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.1);
+}
+
+.talent-wrapper:hover .talent-image img {
+    opacity: 1;                /* 图片变亮 */
+    transform: scale(1.05);    /* 图片微放大 */
+}
+
+/* 3. 文化活动网格 (2x2) */
+.culture-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 两列 */
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.culture-item {
+    background: rgba(255, 255, 255, 0.03); /* 极淡的背景 */
+    border: 1px solid #333;
+    padding: 30px;
+    display: flex; /* 让图标和文字横向排列 */
+    gap: 20px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.culture-item:hover {
+    background: rgba(0, 212, 255, 0.05); /* 悬停微微发蓝 */
+    border-color: #00D4FF;
+    transform: translateY(-5px);
+}
+
+.c-icon {
+    font-size: 30px;
+    color: #00D4FF;
+    flex-shrink: 0; /* 防止图标被压缩 */
+    margin-top: 5px;
+}
+
+.c-info h3 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.c-info p {
+    color: #888;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* 4. 底部加入我们 Banner */
+.join-banner {
+    padding: 80px 0;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('../images/bk1.png'); /* 背景图加遮罩 */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* 视差效果 */
+    border-top: 1px solid #333;
+}
+
+.join-banner h2 {
+    font-size: 36px;
+    color: #fff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(0,0,0,0.8);
+}
+
+.join-banner p {
+    color: #ccc;
+    font-size: 18px;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =========================================
+   5. 手机端适配 (统一放在底部)
+   ========================================= */
+@media (max-width: 768px) {
+    /* 文化网格变单列 */
+    .culture-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .culture-item {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    
+    /* 人才发展板块变垂直排列 */
+    .talent-wrapper {
+        flex-direction: column;
+    }
+
+    .talent-image {
+        height: 250px;         /* 手机上固定高度 */
+        flex: none;            /* 取消比例限制 */
+        width: 100%;
+        order: -1;             /* 可选：如果你想让图片在手机上显示在文字上方，加上这行 */
+    }
+    
+    .talent-content {
+        padding: 30px 20px;
+    }
+
+    /* Banner 字体调整 */
+    .join-banner h2 {
+        font-size: 24px;
+    }
+}
